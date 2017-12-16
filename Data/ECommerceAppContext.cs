@@ -11,6 +11,7 @@ namespace ECommerceApp.Data
     public interface IECommerceAppContext
     {
         DbSet<Tenant> Tenants { get; set; }        
+        DbSet<Product> Products { get; set; }
         Task<int> SaveChangesAsync(string username = null);
     }
     
@@ -25,6 +26,7 @@ namespace ECommerceApp.Data
         }
 
         public DbSet<Tenant> Tenants { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         public int SaveChanges(string username)
         {

@@ -24,7 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>2.4</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
     <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
     <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
     <TypeScriptExperimentalDecorators>True</TypeScriptExperimentalDecorators>
@@ -377,6 +377,11 @@
     <Compile Include="Features\Users\UsersController.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="UnityConfiguration.cs" />
+    <Compile Include="Model\Product.cs" />
+    <Compile Include="Features\Products\ProductsController.cs" />
+    <Compile Include="Features\Products\GetProductsQuery.cs" />
+    <Compile Include="Model\DigitalAsset.cs" />
+    <Compile Include="Model\Category.cs" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="packages\AWSSDK.S3.3.3.5.11\analyzers\dotnet\cs\AWSSDK.S3.CodeAnalysis.dll" />
@@ -385,6 +390,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Features\Categories\" />
+    <Folder Include="Features\DigitalAssets\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>

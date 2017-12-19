@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ECommerceApp</RootNamespace>
     <AssemblyName>ECommerceApp</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -251,6 +251,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ClientApp\app\admin\home-admin-page.component.css" />
+    <Content Include="ClientApp\app\admin\home-admin-page.component.html" />
     <Content Include="ClientApp\app\app.component.css">
       <DependentUpon>app.component.html</DependentUpon>
     </Content>
@@ -261,10 +263,19 @@
     <Content Include="ClientApp\app\home\home-popover.component.css">
       <DependentUpon>home-popover.component.html</DependentUpon>
     </Content>
+    <Content Include="ClientApp\app\products\product-admin-page.component.css" />
+    <Content Include="ClientApp\app\products\product-admin-page.component.html" />
+    <Content Include="ClientApp\app\products\products-admin-page.component.css" />
+    <Content Include="ClientApp\app\products\products-admin-page.component.html" />
     <Content Include="ClientApp\app\shared\components\backdrop.component.css">
       <DependentUpon>backdrop.component.html</DependentUpon>
     </Content>
     <Content Include="ClientApp\app\shared\components\backdrop.component.html" />
+    <Content Include="ClientApp\app\shared\components\digital-asset-input-url.component.css">
+      <DependentUpon>digital-asset-input-url.component.html</DependentUpon>
+    </Content>
+    <Content Include="ClientApp\app\shared\components\digital-asset-input-url.component.html" />
+    <Content Include="ClientApp\app\shared\components\forms.css" />
     <Content Include="ClientApp\app\shared\components\header.component.css">
       <DependentUpon>header.component.html</DependentUpon>
     </Content>
@@ -341,6 +352,13 @@
     <Compile Include="Data\Migrations\TenantConfiguration.cs" />
     <Compile Include="Features\Core\BaseAuthenticatedRequest.cs" />
     <Compile Include="Features\Core\ClaimTypes.cs" />
+    <Compile Include="Features\DigitalAssets\Constants.cs" />
+    <Compile Include="Features\DigitalAssets\DigitalAssetsController.cs" />
+    <Compile Include="Features\DigitalAssets\GetDigitalAssetByUniqueIdQuery.cs" />
+    <Compile Include="Features\DigitalAssets\UploadDigitalAssetCommand.cs" />
+    <Compile Include="Features\DigitalAssets\UploadHandlers\FileMultipartFormDataStreamProvider.cs" />
+    <Compile Include="Features\DigitalAssets\UploadHandlers\InMemoryMultipartFormDataStreamProvider.cs" />
+    <Compile Include="Features\DigitalAssets\UploadHandlers\StreamHelper.cs" />
     <Compile Include="Features\Tenants\SetTenantCommand.cs" />
     <Compile Include="Features\Tenants\TenantsController.cs" />
     <Compile Include="Model\ILoggable.cs" />
@@ -382,6 +400,25 @@
     <Compile Include="Features\Products\GetProductsQuery.cs" />
     <Compile Include="Model\DigitalAsset.cs" />
     <Compile Include="Model\Category.cs" />
+    <Compile Include="Features\Products\AddOrUpdateProductCommand.cs" />
+    <Compile Include="Features\Products\GetProductByIdQuery.cs" />
+    <Compile Include="Features\Products\RemoveProductCommand.cs" />
+    <Compile Include="Features\Products\ProductApiModel.cs" />
+    <Compile Include="Features\Categories\AddOrUpdateCategoryCommand.cs" />
+    <Compile Include="Features\Categories\GetCategoriesQuery.cs" />
+    <Compile Include="Features\Categories\GetCategoryByIdQuery.cs" />
+    <Compile Include="Features\Categories\RemoveCategoryCommand.cs" />
+    <Compile Include="Features\Categories\CategoryApiModel.cs" />
+    <Compile Include="Features\Categories\CategoriesController.cs" />
+    <Compile Include="Features\DigitalAssets\AddOrUpdateDigitalAssetCommand.cs" />
+    <Compile Include="Features\DigitalAssets\GetDigitalAssetsQuery.cs" />
+    <Compile Include="Features\DigitalAssets\GetDigitalAssetByIdQuery.cs" />
+    <Compile Include="Features\DigitalAssets\RemoveDigitalAssetCommand.cs" />
+    <Compile Include="Features\DigitalAssets\DigitalAssetApiModel.cs" />
+    <Compile Include="Data\Migrations\ProductConfiguration.cs" />
+    <Compile Include="Data\Migrations\UserConfiguration.cs" />
+    <Compile Include="Data\Migrations\RoleConfiguration.cs" />
+    <Compile Include="Data\Migrations\CategoryConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="packages\AWSSDK.S3.3.3.5.11\analyzers\dotnet\cs\AWSSDK.S3.CodeAnalysis.dll" />
@@ -390,11 +427,11 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Features\Categories\" />
-    <Folder Include="Features\DigitalAssets\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\admin\admin.module.ts" />
+    <TypeScriptCompile Include="ClientApp\app\admin\home-admin-page.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\app.component.ts">
       <DependentUpon>app.component.html</DependentUpon>
     </TypeScriptCompile>
@@ -408,8 +445,14 @@
       <DependentUpon>home-popover.component.html</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\index.ts" />
+    <TypeScriptCompile Include="ClientApp\app\products\product-admin-page.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\products\products-admin-page.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\products\products.module.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\components\backdrop.component.ts">
       <DependentUpon>backdrop.component.html</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\app\shared\components\digital-asset-input-url.component.ts">
+      <DependentUpon>digital-asset-input-url.component.html</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\app\shared\components\header.component.ts">
       <DependentUpon>header.component.html</DependentUpon>
@@ -446,6 +489,7 @@
     <TypeScriptCompile Include="ClientApp\app\shared\services\authentication.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\services\content-ref.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\services\correlation-ids-list.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\services\digital-assets.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\services\error.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\services\index.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\services\login-redirect.service.ts" />
@@ -486,6 +530,9 @@
     <TypeScriptCompile Include="ClientApp\app\users\users.module.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\guards\index.ts" />
     <TypeScriptCompile Include="ClientApp\app\home\home.module.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="leora.json" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

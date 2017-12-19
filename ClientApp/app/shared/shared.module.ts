@@ -14,6 +14,7 @@ import {Ruler} from "./services/ruler";
 import {Position} from "./services/position";
 import {Space} from "./services/space";
 import {ModalService} from "./services/modal.service";
+import {DigitalAssetsService} from "./services/digital-assets.service";
 
 import {AuthGuardService} from "./guards/auth-guard.service"
 import {TenantGuardService} from "./guards/tenant-guard.service";
@@ -31,9 +32,11 @@ import {TabTitleComponent} from "./components/tab-title.component";
 import {TabsComponent} from "./components/tabs.component";
 import {ModalWindowComponent} from "./components/modal-window.component";
 import {BackdropComponent} from "./components/backdrop.component";
+import {DigitalAssetInputUrlComponent} from "./components/digital-asset-input-url.component";
 
 const providers = [
     EventHub,
+    DigitalAssetsService,
     AuthGuardService,
     AuthenticationService,
     CorrelationIdsList,
@@ -65,6 +68,7 @@ const providers = [
 ];
 
 const declarables = [
+    DigitalAssetInputUrlComponent,
     HeaderComponent,
     LeftNavComponent,
     PagerComponent,

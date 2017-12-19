@@ -9,13 +9,15 @@ using System.Data.Entity;
 
 namespace ECommerceApp.Features.Products
 {
-    public class GetProductsQuery
+    public class GetProductByIdQuery
     {
-        public class Request : BaseRequest, IRequest<Response> { }
+        public class Request : BaseRequest, IRequest<Response> { 
+            public int Id { get; set; }            
+        }
 
         public class Response
         {
-            public ICollection<ProductApiModel> Products { get; set; } = new HashSet<ProductApiModel>();
+            public ProductApiModel Product { get; set; } 
         }
 
         public class Handler : IAsyncRequestHandler<Request, Response>
@@ -27,20 +29,19 @@ namespace ECommerceApp.Features.Products
             }
 
             public async Task<Response> Handle(Request request)
-            {
-                var products = await _context.Products
-                    .Include(x => x.Tenant)
-                    .Where(x => x.Tenant.UniqueId == request.TenantUniqueId )
-                    .ToListAsync();
-
+            {                
                 return new Response()
                 {
-                    Products = products.Select(x => ProductApiModel.FromProduct(x)).ToList()
+                    Product = ProductApiModel.FromProduct(await _context.Products
+                    .Include(x => x.Tenant)				
+					.SingleAsync(x=>x.Id == request.Id &&  x.Tenant.UniqueId == request.TenantUniqueId))
                 };
             }
 
             private readonly ECommerceAppContext _context;
             private readonly ICache _cache;
         }
+
     }
+
 }

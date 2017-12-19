@@ -10,7 +10,9 @@ namespace ECommerceApp.Data
 {
     public interface IECommerceAppContext
     {
-        DbSet<Tenant> Tenants { get; set; }        
+        DbSet<Tenant> Tenants { get; set; } 
+        DbSet<Category> Categories { get; set; }
+        DbSet<DigitalAsset> DigitalAssets { get; set; }
         DbSet<Product> Products { get; set; }
         Task<int> SaveChangesAsync(string username = null);
     }
@@ -25,6 +27,8 @@ namespace ECommerceApp.Data
             Configuration.AutoDetectChangesEnabled = true;
         }
 
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<DigitalAsset> DigitalAssets { get; set; }
         public DbSet<Tenant> Tenants { get; set; }
         public DbSet<Product> Products { get; set; }
 

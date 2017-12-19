@@ -5,10 +5,12 @@ import {RouterModule} from '@angular/router';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 
+import {AdminModule} from "../app/admin/admin.module";
 import {HomeModule} from "../app/home/home.module";
 import {SharedModule} from "../app/shared";
 import {UsersModule} from "../app/users/users.module";
 import {TenantsModule} from "../app/tenants/tenants.module";
+import {ProductsModule} from "../app/products/products.module";
 
 import {AppComponent} from './app.component';
 
@@ -29,10 +31,12 @@ const providers = [];
         FormsModule,
         RouterModule,
 
+        AdminModule,
         HomeModule,
         SharedModule,
         TenantsModule,
-        UsersModule
+        UsersModule,
+        ProductsModule
 
     ],
     providers: providers,
